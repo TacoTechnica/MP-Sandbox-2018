@@ -1,3 +1,4 @@
+package org.usfirst.frc.team694.trajectory;
 
 
 public abstract class Spline {
@@ -7,7 +8,7 @@ public abstract class Spline {
     protected Function interpolationX,
                        interpolationY;
 
-    public Spline(interpolationX, interpolationY) {
+    public Spline(Function interpolationX, Function interpolationY) {
         this.interpolationX = interpolationX;
         this.interpolationY = interpolationY;
     }
@@ -37,7 +38,7 @@ public abstract class Spline {
      * given a progress between 0 and 1
      */
     public double getAngle(double progress) {
-        return getDerivative(progress).getAngle();
+        return getVelocity(progress).getAngle();
     }
 
     /**
@@ -45,11 +46,11 @@ public abstract class Spline {
      */
     public double getSplineLength(double startProgress, double endProgress) {
         double resultLength = 0;
-        Vector2f lastPosition = getPosition(startProgress);
+        Vector2d lastPosition = getPosition(startProgress);
         // Start at 1, we already checked our starting position.
         for(int i = 1; i < SAMPLE_SIZE; i++) {
             double nowProgress = startProgress + (endProgress - startProgress) * (double)(i / SAMPLE_SIZE);
-            Vector2f nowPosition = getPosition(nowProgress);
+            Vector2d nowPosition = getPosition(nowProgress);
             Vector2d delta = nowPosition.sub(lastPosition);
             double deltaDistance = delta.getMagnitude();
 

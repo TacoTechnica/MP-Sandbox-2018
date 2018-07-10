@@ -1,5 +1,6 @@
+package org.usfirst.frc.team694.trajectory;
 
-import java.util.ArrayList
+import java.util.ArrayList;
 
 /** 
  *

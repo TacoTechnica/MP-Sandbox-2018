@@ -1,10 +1,11 @@
+package org.usfirst.frc.team694.trajectory;
 
-public CubicFunction implements Function {
+public class CubicFunction implements Function {
 
     // ax^3 + bx^2 + cx^1 + d
     private double a, b, c, d;
 
-    public HermiteFunction(double a, double b, double c, double d) {
+    public CubicFunction(double a, double b, double c, double d) {
         this.a = a;
         this.b = b;
         this.c = c;

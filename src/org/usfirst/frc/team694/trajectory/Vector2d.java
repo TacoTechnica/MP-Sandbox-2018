@@ -1,5 +1,6 @@
+package org.usfirst.frc.team694.trajectory;
 
-public Vector2d {
+public class Vector2d {
 
     public double x, y;
 
@@ -54,7 +55,7 @@ public Vector2d {
      * Subtracts v to this vector without changing this vector and puts it in result
      *
      */
-    public Vector2d add(Vector2d v, Vector2d result) {
+    public Vector2d sub(Vector2d v, Vector2d result) {
         result.x = x;
         result.y = y;
         return result.sub(v);

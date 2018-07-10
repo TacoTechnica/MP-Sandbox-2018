@@ -1,3 +1,4 @@
+package org.usfirst.frc.team694.trajectory;
 
 /** PathSegment
  *

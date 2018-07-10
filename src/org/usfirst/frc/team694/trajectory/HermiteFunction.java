@@ -1,3 +1,4 @@
+package org.usfirst.frc.team694.trajectory;
 
 
 /** HermiteFunction
@@ -8,7 +9,7 @@
  * Desmos test here: https://www.desmos.com/calculator/sfpr5ponhe
  *
  */
-public HermiteFunction extends CubicFunction {
+public class HermiteFunction extends CubicFunction {
 
     // We form a curve of 4 y values.
     // The actual curve is interpolated between y1 and y2.
