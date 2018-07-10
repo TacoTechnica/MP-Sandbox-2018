@@ -1,0 +1,3 @@
+This is an elementary simulation system for motion profiling.
+
+To use, compile the Motion Profiling library as a jar file and put it in a "code" folder. (for instance, it might look like "./simulation/code/mplib.jar").
