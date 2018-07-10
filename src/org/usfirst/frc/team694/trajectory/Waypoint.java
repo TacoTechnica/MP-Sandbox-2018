@@ -8,8 +8,8 @@ package org.usfirst.frc.team694.trajectory;
  */
 public class Waypoint {
 
-    Vector2d position;
-    double speed;
+    public Vector2d position;
+    public double speed;
     
     public Waypoint(Vector2d position, double speed) {
         this.position = position;

@@ -12,7 +12,7 @@ public class Path {
     /** How expressive the start and end angles are.
      * Basically, how far back to start the first and last point to account for the angle.
      */
-    private static final int ANGLE_EXPRESSIVENESS = 10;
+    private static final int ANGLE_EXPRESSIVENESS = 500;
 
     // TODO: Stitch these together.
     private ArrayList<PathSegment> segments;
@@ -39,11 +39,14 @@ public class Path {
         Vector2d bonusAngleAfterEnd = new Vector2d(ANGLE_EXPRESSIVENESS * Math.cos(endAngle),
                                                    ANGLE_EXPRESSIVENESS * Math.sin(endAngle));
 
+
         Vector2d positionBeforeStart = new Vector2d();
         Vector2d positionAfterEnd = new Vector2d();
         start.sub(bonusAngleBeforeStart, positionBeforeStart);
         end.add(bonusAngleAfterEnd, positionAfterEnd);
-
+        
+//        System.out.println(positionBeforeStart + ", " + positionAfterEnd);
+        
         // Construct our spline segments!
         for(int i = 0; i < waypoints.length - 1; i++) {
             Waypoint prev, now, next, nextnext;
@@ -55,7 +58,7 @@ public class Path {
             now = waypoints[i];
             next = waypoints[i + 1];
 
-            if (i == waypoints.length - 1) {
+            if (i == waypoints.length - 2) {
                 nextnext = new Waypoint(positionAfterEnd, waypoints[i + 1].speed); // i + 1 because that's the last one
             } else {
                 nextnext = waypoints[i + 2];
@@ -113,7 +116,13 @@ public class Path {
         PathSegmentDistancePair pair = getSegmentAtDistance(distanceFromStart);
         return pair.segment.getHeading(pair.distance);
     }
-    
+
+    // Only here for visual testing
+    public Vector2d getPositionAtDistance(double distanceFromStart) {
+        PathSegmentDistancePair pair = getSegmentAtDistance(distanceFromStart);
+        return pair.segment.getPosition(pair.distance);
+    }
+
     /**
      * @return The total distance of the path
      */
@@ -134,5 +143,19 @@ public class Path {
             this.distance = distance;
         }
     }
+    
+//    public static void main(String[] args) {
+//        Waypoint[] waypoints = new Waypoint[] {
+//                new Waypoint(20, 20, 1),
+//                new Waypoint(30, 30, 1),
+//                new Waypoint(30, 20, 1),
+//                new Waypoint(10, 10, 1)    
+//             };
+//             Path path = new Path(Math.PI/2, 0, waypoints);
+//
+//             System.out.println(path.getTotalDistance());
+//             //Vector2d lastPos = path.getPositionAtDistance(0);
+//
+//    }
 
 }

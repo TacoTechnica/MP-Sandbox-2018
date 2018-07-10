@@ -8,6 +8,11 @@ public class Vector2d {
         this.x = x;
         this.y = y;
     }
+    
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
 
     // Allow empty constructors. Just makes the 0 vector.
     public Vector2d() {

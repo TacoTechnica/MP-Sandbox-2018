@@ -3,7 +3,7 @@ package org.usfirst.frc.team694.trajectory;
 
 public abstract class Spline {
 
-    private static final int SAMPLE_SIZE = 100;
+    private static final int SAMPLE_SIZE = 500;
 
     protected Function interpolationX,
                        interpolationY;
@@ -46,12 +46,12 @@ public abstract class Spline {
      */
     public double getSplineLength(double startProgress, double endProgress) {
         double resultLength = 0;
-        Vector2d lastPosition = getPosition(startProgress);
-        // Start at 1, we already checked our starting position.
-        for(int i = 1; i < SAMPLE_SIZE; i++) {
-            double nowProgress = startProgress + (endProgress - startProgress) * (double)(i / SAMPLE_SIZE);
+        double deltaProgress = (endProgress - startProgress) / (double)SAMPLE_SIZE;
+        for(int i = 0; i < SAMPLE_SIZE - 1; i++) {
+            double nowProgress = startProgress + i * deltaProgress;
             Vector2d nowPosition = getPosition(nowProgress);
-            Vector2d delta = nowPosition.sub(lastPosition);
+            Vector2d nextPosition = getPosition(nowProgress + deltaProgress);
+            Vector2d delta = nextPosition.sub(nowPosition);
             double deltaDistance = delta.getMagnitude();
 
             resultLength += deltaDistance;

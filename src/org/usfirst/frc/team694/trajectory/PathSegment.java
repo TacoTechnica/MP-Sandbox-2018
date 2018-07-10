@@ -73,6 +73,12 @@ public class PathSegment {
         return currentVelocityDirection.getAngle();
     }
     
+    // Only here for visual testing.
+    public Vector2d getPosition(double distance) {
+        double currentProgress = getProgress(distance);
+        return spline.getPosition(currentProgress);
+    }
+    
     /**
      * @return how long the spline is in real units
      */
