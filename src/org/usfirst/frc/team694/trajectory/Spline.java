@@ -24,10 +24,10 @@ public abstract class Spline {
     }
 
     /**
-     * Gets the velocity of this spline,
+     * Gets the derivative of this spline (NOTE: Not velocity. Expressed in terms of progress),
      * given a progress between 0 and 1
      */
-    public Vector2d getVelocity(double progress) {
+    public Vector2d getDerivative(double progress) {
         double dx = interpolationX.getDerivative(progress);
         double dy = interpolationY.getDerivative(progress);
         return new Vector2d(dx, dy);
@@ -38,7 +38,7 @@ public abstract class Spline {
      * given a progress between 0 and 1
      */
     public double getAngle(double progress) {
-        return getVelocity(progress).getAngle();
+        return getDerivative(progress).getAngle();
     }
 
     /**

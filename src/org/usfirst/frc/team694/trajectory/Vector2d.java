@@ -9,6 +9,10 @@ public class Vector2d {
         this.y = y;
     }
 
+    // Allow empty constructors. Just makes the 0 vector.
+    public Vector2d() {
+    }
+
     public double getMagnitudeSquared() {
         return x*x + y*y;
     }
