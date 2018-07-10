@@ -12,7 +12,7 @@ public class Path {
     /** How expressive the start and end angles are.
      * Basically, how far back to start the first and last point to account for the angle.
      */
-    private static final int ANGLE_EXPRESSIVENESS = 500;
+//    private static final int ANGLE_EXPRESSIVENESS = 500;
 
     // TODO: Stitch these together.
     private ArrayList<PathSegment> segments;
@@ -22,11 +22,12 @@ public class Path {
 
     /**
      * 
+     * @param angleExpressiveness: How expressive should start/end angles be?
      * @param startAngle: What angle to start the path with
      * @param endAngle: What angle to end the path with
      * @param waypoints
      */
-    public Path(double startAngle, double endAngle, Waypoint... waypoints ) {
+    public Path(double angleExpressiveness, double startAngle, double endAngle, Waypoint... waypoints ) {
         segments = new ArrayList<>(waypoints.length + 2); // + 2 because we need the extra start and ending waypoints (from the angle)
 
         // Handle the extra waypoints at the start and end of the segmented spline curve.
@@ -34,10 +35,10 @@ public class Path {
         Vector2d start = waypoints[0].position;
         Vector2d end = waypoints[waypoints.length - 1].position;
 
-        Vector2d bonusAngleBeforeStart = new Vector2d(ANGLE_EXPRESSIVENESS * Math.cos(startAngle),
-                                                      ANGLE_EXPRESSIVENESS * Math.sin(startAngle));
-        Vector2d bonusAngleAfterEnd = new Vector2d(ANGLE_EXPRESSIVENESS * Math.cos(endAngle),
-                                                   ANGLE_EXPRESSIVENESS * Math.sin(endAngle));
+        Vector2d bonusAngleBeforeStart = new Vector2d(angleExpressiveness * Math.cos(startAngle),
+                                                      angleExpressiveness * Math.sin(startAngle));
+        Vector2d bonusAngleAfterEnd = new Vector2d(angleExpressiveness * Math.cos(endAngle),
+                                                   angleExpressiveness * Math.sin(endAngle));
 
 
         Vector2d positionBeforeStart = new Vector2d();
