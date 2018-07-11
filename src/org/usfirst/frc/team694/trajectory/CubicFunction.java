@@ -13,7 +13,7 @@ public class CubicFunction implements Function {
     }
 
     public double getValue(double t) {
-        return a*t*t + b*t*t + c*t + d;
+        return a*t*t*t + b*t*t + c*t + d;
     }
 
     public double getDerivative(double t) {

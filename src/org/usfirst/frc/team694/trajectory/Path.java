@@ -145,18 +145,22 @@ public class Path {
         }
     }
     
-//    public static void main(String[] args) {
-//        Waypoint[] waypoints = new Waypoint[] {
-//                new Waypoint(20, 20, 1),
-//                new Waypoint(30, 30, 1),
-//                new Waypoint(30, 20, 1),
-//                new Waypoint(10, 10, 1)    
-//             };
-//             Path path = new Path(Math.PI/2, 0, waypoints);
-//
-//             System.out.println(path.getTotalDistance());
-//             //Vector2d lastPos = path.getPositionAtDistance(0);
-//
-//    }
+    public static void main(String[] args) {
+        Waypoint[] waypoints = new Waypoint[] {
+                new Waypoint(20, 20, 1),
+                new Waypoint(30, 30, 2),
+                new Waypoint(30, 20, 1),
+                new Waypoint(10, 10, 1)    
+             };
+             Path path = new Path(0, 0, 0, waypoints);
+
+             System.out.println(path.getTotalDistance());
+             System.out.println(Math.toDegrees(path.getAngularVelocityAtDistance(9)));
+             
+             
+
+             //Vector2d lastPos = path.getPositionAtDistance(0);
+
+    }
 
 }

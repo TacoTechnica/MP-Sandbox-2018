@@ -42,7 +42,7 @@ public class PathSegment {
             // Cap it off at the total distance 
             distance = totalDistance;
         }
-        return (totalDistance - distance) * velFinal + velInitial;
+        return (distance / totalDistance) * (velFinal - velInitial) + velInitial;
     }
 
     /**
@@ -72,7 +72,7 @@ public class PathSegment {
         Vector2d currentVelocityDirection = spline.getDerivative(currentProgress);
         return currentVelocityDirection.getAngle();
     }
-    
+
     // Only here for visual testing.
     public Vector2d getPosition(double distance) {
         double currentProgress = getProgress(distance);
